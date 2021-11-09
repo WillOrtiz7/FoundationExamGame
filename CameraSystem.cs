@@ -5,10 +5,7 @@ using UnityEngine;
 public class CameraSystem : MonoBehaviour
 {
     private GameObject player;
-    public float xMin;
-    public float xMax;
-    public float yMin;
-    public float yMax;
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +16,6 @@ public class CameraSystem : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        float x = Mathf.Clamp(player.transform.position.x, xMin, xMax);
-        float y = Mathf.Clamp(player.transform.position.y, yMin, yMax);
-        gameObject.transform.position = new Vector3(x, y, gameObject.transform.position.z);
+        transform.position = new Vector3 (player.transform.position.x + offset.x, player.transform.position.y + offset.y, offset.z);
     }
 }
